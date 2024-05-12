@@ -15,6 +15,17 @@
     </div>
   </div>
 </nav>
+<div [style.display]="displayV">
+  <div class="container my-5">
+    <div class="bg-light p-5 rounded">
+      <div class="col-sm-8 py-5 mx-auto">
+        <h1 class="display-5 fw-normal">Find - GitHub User Repository</h1>
+        <p class="fs-3">This App is GitHub User Repository Provider.To fatch repository of user . Enter username in search bar and search it </p>
+        <p class="fs-5">Angular is a popular open-source web application framework maintained by Google and a community of developers. It's widely used for building single-page web applications (SPAs) and dynamic web applications.</p>
+    </div>
+    </div>
+  </div>
+</div>
 <p *ngIf="loading">Loading...</p>
 <h5 *ngIf="error" class="text-center fs-i mt-3" style="color: red">
   {{ error }}

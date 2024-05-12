@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit{
   username: string = '';
   repos: any[] = [];
+  displayV: string ='block';
   loading: boolean = false;
   error: string = '';
   // constructor(
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit{
     //   this.error = 'Please enter a valid username.';
     //   return;
     // }
-
+    this.displayV='none';
     this.loading = true;
     this.error = '';
 

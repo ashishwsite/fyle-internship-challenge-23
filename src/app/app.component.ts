@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './services/api.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,42 @@ import { ApiService } from './services/api.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  constructor(
-    private apiService: ApiService
-  ) {}
+  username: string = '';
+  repos: any[] = [];
+  loading: boolean = false;
+  error: string = '';
+  // constructor(
+  //   private apiService: ApiService
+  // ) {}
+  constructor(private http: HttpClient) {}
+  searchRepos() {
+    // if (this.username.trim() === '') {
+    //   this.error = 'Please enter a valid username.';
+    //   return;
+    // }
 
+    this.loading = true;
+    this.error = '';
+
+    const url = `https://api.github.com/users/${this.username}/repos`;
+    // const url = `https://api.github.com/users/ashishwsite/repos`;
+
+    this.http.get<any[]>(url)
+      .subscribe(
+        (data) => {
+          
+          this.repos = data;
+          // console.log(this.repos.language);
+          console.log(this.repos);
+          this.loading = false;
+        },
+        (error) => {
+          this.error = 'Enter Valid user / try again later.';
+          this.loading = false;
+        }
+      );
+  }
   ngOnInit() {
-    this.apiService.getUser('johnpapa').subscribe(console.log);
+
   }
 }

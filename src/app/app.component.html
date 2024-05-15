@@ -30,6 +30,7 @@
 <h5 *ngIf="error" class="text-center fs-i mt-3" style="color: red">
   {{ error }}
 </h5>
+<ul  *ngIf="repos.length===0 " style="color: orangered; font-size: xx-large ; text-align: center;">No repository associated to this user </ul>
 <ul *ngIf="repos.length">
   <div class="container">
     <h2 style="color: brown">UserName: {{ username }}</h2>
